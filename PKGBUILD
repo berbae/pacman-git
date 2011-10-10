@@ -28,9 +28,12 @@ build() {
   cd $srcdir
   msg "Connecting to the GIT repository..."
 
-  if [ -d $srcdir/$_gitname ] ; then
+  if [[ -d $srcdir/$_gitname ]] ; then
       cd $_gitname
-      ./autoclean.sh
+      if [[ -s Makefile ]]; then
+        make distclean
+        ./autoclean.sh
+      fi
       git pull origin
       msg "The local files are updated."
   else
