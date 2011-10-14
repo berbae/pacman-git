@@ -2,8 +2,8 @@
 
 pkgname=('pacman-git' 'pacman-contrib-git')
 pkgdesc="Build chain for package manager git version."
-pkgver=4.0.0rc2
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.archlinux.org/pacman/"
 license=('GPL')
@@ -14,9 +14,9 @@ options=(!libtool)
 source=(pacman.conf
         pacman.conf.x86_64
         makepkg.conf)
-md5sums=('66d1741539aa7c1e374d831cd692c837'
-         '4c046b9caca8a86b7d2f2b86895c3840'
-         'c29c3dcc3ab56f4b46ee1f55115b312c')
+md5sums=('ae4abf6df12483d26b39529ab27c0837'
+         '99d8fae7a3c761e3ebad800f6a216e83'
+         'db051afbd12993b7743ccd4d58668499')
 
 # keep an upgrade path for older installations
 PKGEXT='.pkg.tar.gz'
@@ -31,6 +31,7 @@ build() {
   if [[ -d $srcdir/$_gitname ]] ; then
       cd $_gitname
       if [[ -s Makefile ]]; then
+        make clean
         make distclean
         ./autoclean.sh
       fi
@@ -50,15 +51,15 @@ build() {
   make
 }
 
-check() {
-  cd $srcdir/$_gitname
-  make check
-}
+#check() {
+#  cd $srcdir/$_gitname
+#  make check
+#}
 
 package_pacman-git() {
   pkgdesc="A library-based package manager with dependency support. git version."
   groups=('base')
-  depends=('bash' 'glibc>=2.14' 'curl>=7.19.4' 'gpgme' 'libarchive>=2.8.4' 'libfetch>=2.28' 'pacman-mirrorlist')
+  depends=('bash' 'glibc>=2.14' 'curl>=7.19.4' 'gpgme' 'libarchive>=2.8.4' 'pacman-mirrorlist')
   optdepends=('fakeroot: for makepkg usage as normal user')
   backup=(etc/pacman.conf etc/makepkg.conf)
   conflicts=('pacman')
