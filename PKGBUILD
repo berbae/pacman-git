@@ -105,25 +105,25 @@ package_pacman-contrib-git() {
   provides=('pacman-contrib')
   conflicts=('pacman-contrib')
 
-  paccontrib=(
+  _scripts=(
     bacman
     paccache
     pacdiff
     paclist
+    paclog-pkglist
     pacscripts
     pacsearch
-    paclog-pkglist
   )
 
   cd $srcdir/$_gitname/contrib
-  for script in "${paccontrib[@]}"; do
-    install -D ${script} ${pkgdir}/usr/bin/${script}
-  done
 
-  install -Dm644 PKGBUILD.vim ${pkgdir}/usr/share/vim/vimfiles/syntax/PKGBUILD.vim
-  install -d ${pkgdir}/usr/share/vim/vimfiles/ftdetect
+  install -d $pkgdir/usr/bin $pkgdir/usr/share/vim/vimfiles/ftdetect
+
+  install -t $pkgdir/usr/bin "${_scripts[@]}"
+
+  install -Dm644 PKGBUILD.vim $pkgdir/usr/share/vim/vimfiles/syntax/PKGBUILD.vim
   echo "au BufNewFile,BufRead PKGBUILD set filetype=PKGBUILD" \
-    > ${pkgdir}/usr/share/vim/vimfiles/ftdetect/PKGBUILD.vim
+    > $pkgdir/usr/share/vim/vimfiles/ftdetect/PKGBUILD.vim
 }
 
 
