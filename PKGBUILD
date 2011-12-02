@@ -2,7 +2,7 @@
 
 pkgname=('pacman-git' 'pacman-contrib-git')
 pkgdesc="Build chain for package manager git version."
-pkgver=4.0.1
+pkgver=20111202
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.archlinux.org/pacman/"
@@ -14,8 +14,8 @@ options=(!libtool)
 source=(pacman.conf
         pacman.conf.x86_64
         makepkg.conf)
-md5sums=('ae4abf6df12483d26b39529ab27c0837'
-         '99d8fae7a3c761e3ebad800f6a216e83'
+md5sums=('4ebee5e1da37a6afdf06c1bc55efbf92'
+         '3e3342bd4abda20bb758595c1cbfb014'
          'db051afbd12993b7743ccd4d58668499')
 
 # keep an upgrade path for older installations
@@ -30,11 +30,7 @@ build() {
 
   if [[ -d $srcdir/$_gitname ]] ; then
       cd $_gitname
-      if [[ -s Makefile ]]; then
-        make clean
-        make distclean
-        ./autoclean.sh
-      fi
+      git clean -qxf
       git pull origin
       msg "The local files are updated."
   else

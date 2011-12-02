@@ -12,10 +12,8 @@ pacman.install
 
 They are contained in the pacman-git.tar.gz file.
 
-In PKGBUILD edit the pkgver and/or the pkgrel variables for each new build.
-
 Then use the command:
 
-makepkg --holdver --log
+makepkg 
 
 And install the pacman-git and pacman-git-contrib packages.
