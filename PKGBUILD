@@ -30,7 +30,10 @@ build() {
 
   if [[ -d $srcdir/$_gitname ]] ; then
       cd $_gitname
+      msg "Cleaning working directory."
       git clean -qxf
+      git reset --hard
+      msg "Updating local files."
       git pull origin
       msg "The local files are updated."
   else
