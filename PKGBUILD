@@ -2,7 +2,7 @@
 
 pkgname=('pacman-git' 'pacman-contrib-git')
 pkgdesc="Build chain for package manager git version."
-pkgver=20111202
+pkgver=20111230
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.archlinux.org/pacman/"
@@ -47,6 +47,9 @@ build() {
   ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc \
     --localstatedir=/var --enable-doc
+  make
+
+  cd $srcdir/$_gitname/contrib
   make
 }
 

@@ -1,6 +1,6 @@
 This is my version of a pacman-git PKGBUILD.
 
-It is a modification of the falconindy's one in AUR found at https://aur.archlinux.org/packages.php?ID=29937
+It is different from the falconindy's one in AUR found at https://aur.archlinux.org/packages.php?ID=29937
 
 To build the package, these files should be present in the build directory:
 
