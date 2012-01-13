@@ -2,20 +2,20 @@
 
 pkgname=('pacman-git' 'pacman-contrib-git')
 pkgdesc="Build chain for package manager git version."
-pkgver=20111230
+pkgver=20120109
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.archlinux.org/pacman/"
 license=('GPL')
-makedepends=('git' 'asciidoc' 'curl>=7.19.4' 'gpgme' 'libarchive>=2.8.4')
+makedepends=('git' 'asciidoc' 'curl>=7.19.4' 'gpgme' 'libarchive>=3.0.2')
 checkdepends=('python2')
 
 options=(!libtool)
 source=(pacman.conf
         pacman.conf.x86_64
         makepkg.conf)
-md5sums=('4ebee5e1da37a6afdf06c1bc55efbf92'
-         '3e3342bd4abda20bb758595c1cbfb014'
+md5sums=('4605b3490d4fd1e5c6e20db17da9ded6'
+         'a0edf98ad1845a4c7d902a86638d5d2d'
          'db051afbd12993b7743ccd4d58668499')
 
 # keep an upgrade path for older installations
@@ -61,7 +61,7 @@ build() {
 package_pacman-git() {
   pkgdesc="A library-based package manager with dependency support. git version."
   groups=('base')
-  depends=('bash' 'glibc>=2.14' 'curl>=7.19.4' 'gpgme' 'libarchive>=2.8.4' 'pacman-mirrorlist')
+  depends=('bash' 'glibc>=2.15' 'curl>=7.19.4' 'gpgme' 'libarchive>=3.0.2' 'pacman-mirrorlist')
   optdepends=('fakeroot: for makepkg usage as normal user')
   backup=(etc/pacman.conf etc/makepkg.conf)
   conflicts=('pacman')

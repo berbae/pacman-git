@@ -10,7 +10,7 @@ pacman.conf.x86_64
 makepkg.conf
 pacman.install
 
-They are contained in the pacman-git.tar.gz file.
+They are contained in the pacman-git-2012xxxx-1.src.tar.gz file.
 
 Then use the command:
 
